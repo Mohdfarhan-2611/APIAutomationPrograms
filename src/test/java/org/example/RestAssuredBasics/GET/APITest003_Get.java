@@ -1,15 +1,13 @@
-package org.example.SampleCheck;
+package org.example.RestAssuredBasics.GET;
 
 import io.restassured.RestAssured;
+import org.testng.annotations.Test;
 
-public class APITest002 {
+public class APITest003_Get {
 
-    //Full url: https://restful-booker.herokuapp.com/booking/1
-    //base uri: https://restful-booker.herokuapp.com
-    //base path: /booking/1
-
-    public static void main(String[] args) {
-
+    @Test
+    public void test_Get_Rest()
+    {
         RestAssured
                 .given()
                    .baseUri("https://restful-booker.herokuapp.com")
@@ -18,6 +16,10 @@ public class APITest002 {
                    .get()
                 .then().log().all()
                    .statusCode(200);
+    }
 
+    public static void main(String[] args)
+    {
+                      
     }
 }
