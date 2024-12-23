@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class APItesting_018_payLoadManagement {
 
-    static Integer bookingid;
+
 
     public static void main(String[] args) {
 
@@ -38,14 +38,13 @@ public class APItesting_018_payLoadManagement {
         //when
         Response response = requestSpecification.when().post();
 
+        Integer bookingid = response.then().extract().path("bookingid");
+
         //Then
         ValidatableResponse validatableResponse = response.then().log().all();
         validatableResponse.statusCode(200);
 
-
-         bookingid = response.then().extract().path("bookingid");
-         assertThat(bookingid).isNotNull().isPositive().isNotZero();
-
+        assertThat(bookingid).isNotNull().isPositive().isNotZero();
         System.out.println("Booking id is " +bookingid);
 
 
