@@ -1,4 +1,4 @@
-package org.example.payLoadManagement;
+package org.example.payLoadManagement.UsingMap;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
