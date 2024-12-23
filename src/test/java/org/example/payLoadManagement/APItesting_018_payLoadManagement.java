@@ -4,13 +4,14 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
-
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class APItesting_018_payLoadManagement {
 
+    static Integer bookingid;
 
     public static void main(String[] args) {
 
@@ -41,6 +42,11 @@ public class APItesting_018_payLoadManagement {
         ValidatableResponse validatableResponse = response.then().log().all();
         validatableResponse.statusCode(200);
 
+
+         bookingid = response.then().extract().path("bookingid");
+         assertThat(bookingid).isNotNull().isPositive().isNotZero();
+
+        System.out.println("Booking id is " +bookingid);
 
 
     }
