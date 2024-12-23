@@ -8,6 +8,7 @@ import io.restassured.specification.RequestSpecification;
 import org.codehaus.groovy.syntax.Token;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import static org.assertj.core.api.Assertions.*;
 
 public class APITest008_IntegrationTest {
     //create token
@@ -47,7 +48,13 @@ public class APITest008_IntegrationTest {
         //Extract the token
         String Token = response.jsonPath().getString("token");
         System.out.println(Token);
+
+        assertThat(Token).isNotEmpty().isNotNull().isAlphanumeric();
+
+
+
         return Token;
+
     }
 
     public String bookingID()
@@ -78,6 +85,9 @@ public class APITest008_IntegrationTest {
 
         bookingid = response.jsonPath().getString("bookingid");
         System.out.println(bookingid);
+
+        assertThat(bookingid).isNotNull().isNotEmpty().isNotBlank();
+
         return bookingid;
     }
 
